@@ -1,0 +1,29 @@
+﻿<Window x:Class="GateCAmp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        Title="Gate Camper - MainInterface" Height="350" Width="500"
+        ResizeMode="CanResize"
+        Background="{DynamicResource WindowBackgrounBrush}">
+    <Window.Resources>
+        <sys:String x:Key="EntitiesListBoxTitle">Entities:</sys:String>
+        
+        <LinearGradientBrush x:Key="WindowBackgrounBrush">
+            <GradientStop Offset="0" Color="Silver"/>
+            <GradientStop Offset="1" Color="Gray"/>
+        </LinearGradientBrush>
+    </Window.Resources>
+    
+    <Grid Name="TheGrid1" MouseUp="mainGrid_MouseUp">
+        <DockPanel Margin="10" Name="MainDockPanel">
+            <WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="10">
+                <Button Name="RefreshEntity" Click="OnClickRefreshEntity"> Refresh</Button>
+            </WrapPanel>
+
+            <Label Content="{StaticResource EntitiesListBoxTitle}"></Label>
+            <ListBox Name="EntityList" />
+        </DockPanel>
+
+    </Grid>
+
+</Window>
