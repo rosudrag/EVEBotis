@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="BatchCommanding.Model.AsynchronusCommand">
+    <Position X="6.5" Y="1.5" Width="5.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="BatchCommanding.Model.AsynchronusCommand.DlgProgressChanged" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Model\AsynchronousCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="BatchCommanding.Model.AsynchronusCommand.DlgDataReady" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Model\AsynchronousCommand.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <InheritanceLine Type="BatchCommanding.Model.BaseCommand" FixedToPoint="true">
+      <Path>
+        <Point X="8.25" Y="1.154" />
+        <Point X="8.25" Y="1.308" />
+        <Point X="8.5" Y="1.308" />
+        <Point X="8.5" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAUAAIAEACAAACAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\AsynchronousCommand.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BatchCommanding.Model.BaseCommand" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="4" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEACAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Model\BaseCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BatchCommanding.Model.BGWH">
+    <Position X="1.25" Y="5.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAAAAAAAABBIAAAAAAAAAAA=</HashCode>
+      <FileName>Model\BGWH.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BatchCommanding.Model.Simulate">
+    <Position X="1.25" Y="7.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Simulate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BatchCommanding.ViewModel.BaseViewModel">
+    <Position X="0.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModel\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BatchCommanding.ViewModel.MainWindowViewModel">
+    <Position X="0.75" Y="2.25" Width="5" />
+    <InheritanceLine Type="BatchCommanding.ViewModel.BaseViewModel" FixedFromPoint="true">
+      <Path>
+        <Point X="2" Y="1.92" />
+        <Point X="2" Y="2.058" />
+        <Point X="3.25" Y="2.058" />
+        <Point X="3.25" Y="2.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAQAAAAAAAAAABAAAAgGAACAAAA=</HashCode>
+      <FileName>ViewModel\MainWindowViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Cambria" Size="9" />
+</ClassDiagram>

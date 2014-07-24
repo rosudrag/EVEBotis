@@ -1,0 +1,140 @@
+﻿<Window x:Class="BatchCommanding.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm = "clr-namespace:BatchCommanding.ViewModel"
+        xmlns:cmd ="clr-namespace:BatchCommanding.Model"
+        Title="{Binding}" Height="350" Width="525" >
+    <Window.Resources>
+        <vm:MainWindowViewModel x:Key="VM"></vm:MainWindowViewModel>
+        <cmd:AsynchronusCommand x:Key="CMD"></cmd:AsynchronusCommand>
+        <cmd:BGWH x:Key="bgwh"></cmd:BGWH>
+        <LinearGradientBrush x:Key="RectangleFill" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF000189" Offset="0.651" />
+            <GradientStop Color="White" Offset="0" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ProgressBarBackGround" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFF0F0F0" Offset="0" />
+            <GradientStop Color="#FF1F1C1C" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>            
+            <RowDefinition Height="25"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Rectangle 
+            Grid.Row="0" 
+            Fill="{StaticResource RectangleFill}"></Rectangle>
+        <TextBox 
+           Background="Transparent"
+            Foreground="White" 
+            HorizontalContentAlignment="Center" 
+            VerticalContentAlignment="Center" 
+            FontSize="18">Asynchronous BackGroundWorker/ICommand using MVVM</TextBox>
+        <TabControl Grid.Row="1" VerticalAlignment="Stretch">
+            <TabItem Header="Test the Code">  
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="28"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>         
+            <Button 
+                    Grid.Row="0"
+                    Grid.Column="0"  
+                    Margin="5"
+                    Command="{StaticResource CMD}" 
+                    CommandParameter="{Binding Source={StaticResource bgwh}}">Start the Asynchronous job</Button>
+            <Button Grid.Column="1"  
+                    Margin="5"
+                    Command="{Binding Source={StaticResource CMD}}" 
+                    CommandParameter="{Binding Source={StaticResource VM},
+                    Path =InterruptCommandExecution}">Stop the Asynchronus job</Button>
+            <ListBox 
+                Grid.Row="1" Grid.ColumnSpan="2"   
+                ItemsSource="{Binding Source={StaticResource VM}, Path=Data}"></ListBox>                   
+        </Grid>
+    </TabItem>
+            <TabItem Height="auto" Header="Browse the Web">
+                <WebBrowser Source="http://www.google.com"></WebBrowser>
+            </TabItem>
+            <TabItem Header="Code Diagrams">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <FlowDocumentScrollViewer>
+                        <FlowDocument Background="White" FontFamily="Cambria" FontSize="12">
+                            <Paragraph>
+                               The ViewModel in an MVVM pattern is just a glass with a bunch of Getter and Setters for the MainWindow to 
+                                bind against.  There are private properties that are used to store the information in which the "Get" request returns
+                                those private values.  It's probably a good idea to always name your Private vars the same as the Public vars. 
+                                preceded with an underscore.
+                            </Paragraph>
+                            <Paragraph>
+                                One of the interesting Public properties is the InterruptCommandExecution property.  It was placed into 
+                                the VM so that this property may be used as a Command Parameter in the MainWindow's bindings.  All it does is
+                                send an arbitrary string semiphore to the BackGround worker to stop activity.
+                            </Paragraph>
+                            <BlockUIContainer>
+                                <Image Source="/BatchCommanding;component/Images/AsynchronousBackGroundVM.png"></Image>
+                            </BlockUIContainer>
+                            <Paragraph>
+                                The Visitor pattern is seen in this View model with the EventHandler that register "listen" for the Progress and
+                                DataReady events.  They simply update the properties "Progress and "Data".  A very simple yet elegant solution
+                                to having the Model Asynchrously update the ViewModel.  This acheives the concept of loose coupling in that 
+                                the ViewModel has no clue the Model exists rather it just sits a listens for "Data Ready" events.
+                            </Paragraph>
+                        </FlowDocument>  
+                    </FlowDocumentScrollViewer> 
+                    <FlowDocumentScrollViewer Grid.Column="1">
+                        <FlowDocument 
+                            Background="White" 
+                            ColumnWidth="500" 
+                            IsColumnWidthFlexible="False" 
+                            FontSize="12" 
+                            FontFamily="Cambria">  
+                            <Paragraph>
+                                The Base Command class is a BackGroundWorker that implements the 
+                                ICommand interface.  It supports Cancellation, Progress reporting and contains
+                                the Virutal methods needed to be overriden in the concrete class "AsynchronousCommand" shown below.
+                            </Paragraph>
+                            <BlockUIContainer>                                  
+                                          <Image 
+                                              Source="/BatchCommanding;component/Images/ClassDiagram.png" 
+                                             Width="500" Height="500"></Image>
+                            </BlockUIContainer>        
+                            <Paragraph>
+                                The Asynchronous class then overrides these methods.
+                            </Paragraph>
+                            <BlockUIContainer>
+                                <Image Source="/BatchCommanding;component/Images/AsychronousOverrides.png"></Image>
+                            </BlockUIContainer>
+                            <Paragraph>
+                                Note that all of the methods starting with "BW" are related to the 
+                                backgroundworker overrides.  The Execute method is then the implementation
+                                of the ICommand.  The obsure GetBackGroundWorkerHelper is just a helper class that
+                                demonstrates how to use a helper object for passing values in and out of other threads. </Paragraph>
+                        </FlowDocument>
+                    </FlowDocumentScrollViewer>
+
+
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+       
+           
+        <ProgressBar Grid.Row="3" Value="{Binding Path=Progress, Source={StaticResource VM}}" Background="{StaticResource ProgressBarBackGround}"></ProgressBar>
+    </Grid>
+</Window>

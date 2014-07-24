@@ -1,0 +1,33 @@
+﻿<Window x:Class="Gate2Camp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModels="clr-namespace:Gate2Camp.ViewModels"
+        Title="{Binding GateCamping.ActivePilot}" Height="350" Width="525"
+        Closing="Close">
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListView Grid.Row="1" ItemsSource="{Binding GateCamping.Entities}" Margin="10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Label Content="{Binding EntityName}"/>
+                        <Label Content="{Binding EntityGroup}"/>
+                        <Label Content="{Binding EntityDistanceTo}"/>
+                        <Label Content="{Binding EntityStandings}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <WrapPanel Grid.Row="0">
+            <Button Margin="20" Content="GateCamp" Command="{Binding RunGateCamp}"/>
+            <Button Margin="20" Content="StopGateCamp" Command="{Binding StopGateCamp}"/>
+            <Label Margin="20" Content="{Binding GateCamping.Active}"/>
+        </WrapPanel>
+    </Grid>
+</Window>
