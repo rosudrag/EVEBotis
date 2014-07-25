@@ -1,13 +1,15 @@
-﻿using System;
+﻿#region
+
+using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Threading;
 using EVE.ISXEVE;
 using Gate2Camp.EVEBotLogic.Common;
 using Gate2Camp.ViewModels;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 using LavishVMAPI;
+
+#endregion
 
 namespace Gate2Camp.EVEBotLogic.BusinessLogic
 {
@@ -70,7 +72,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// <value>
         ///     The active pilot.
         /// </value>
-        public string ActivePilot { get; set; }
+        private string ActivePilot { get; set; }
 
         /// <summary>
         ///     Attaches the on frame.
@@ -101,7 +103,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         }
 
         /// <summary>
-        /// Does the work.
+        ///     Does the work.
         /// </summary>
         /// <param name="myMe">My me.</param>
         /// <param name="myEVE">My eve.</param>
@@ -141,6 +143,21 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
             _oneTimeSetup = true;
 
             Frame.Unlock();
+        }
+
+        /// <summary>
+        ///     Refreshes the and get active pilot.
+        /// </summary>
+        /// <returns></returns>
+        public string RefreshAndGetActivePilot()
+        {
+            Frame.Wait(true);
+
+            ActivePilot = new Me().Name;
+
+            Frame.Unlock();
+
+            return string.IsNullOrEmpty(ActivePilot) ? "Unknown Pilot Name" : ActivePilot;
         }
     }
 }

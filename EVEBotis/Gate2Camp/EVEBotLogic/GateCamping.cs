@@ -19,7 +19,18 @@ namespace Gate2Camp.EVEBotLogic
             Entities = new ObservableCollection<EntityViewModel>();
             GateCampingBotBusinessLogic = new GateCampingBotBusinessLogic(BotState.Idle);
 
+            InitialiseSelf(GateCampingBotBusinessLogic);
+
             InitRefreshEntitiesTimer();
+        }
+
+        /// <summary>
+        /// Initialises the self.
+        /// </summary>
+        /// <param name="gateCampingBotBusinessLogic">The gate camping bot business logic.</param>
+        private void InitialiseSelf(GateCampingBotBusinessLogic gateCampingBotBusinessLogic)
+        {
+            ActivePilot = gateCampingBotBusinessLogic.RefreshAndGetActivePilot();
         }
 
         /// <summary>
