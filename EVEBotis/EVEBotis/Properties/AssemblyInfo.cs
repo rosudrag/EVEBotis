@@ -7,11 +7,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Gate2CampView")]
+[assembly: AssemblyTitle("EVEBotis")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Neo Reconia Sys - 2012")]
-[assembly: AssemblyProduct("Gate2CampView")]
+[assembly: AssemblyProduct("EVEBotis")]
 [assembly: AssemblyCopyright("Copyright © Neo Reconia Sys - 2012 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

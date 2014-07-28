@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroMvvm", "..\MicroMvvm\MicroMvvm.csproj", "{9EFE6CBD-DF21-436E-9F81-E258BAB0B653}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EVEBotis", "EVEBotis\EVEBotis.csproj", "{06BF4FD4-D008-461C-986E-42ACD04CDD06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,16 @@ Global
 		{9EFE6CBD-DF21-436E-9F81-E258BAB0B653}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{9EFE6CBD-DF21-436E-9F81-E258BAB0B653}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{9EFE6CBD-DF21-436E-9F81-E258BAB0B653}.Release|x86.ActiveCfg = Release|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{06BF4FD4-D008-461C-986E-42ACD04CDD06}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

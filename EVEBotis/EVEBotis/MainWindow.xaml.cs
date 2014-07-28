@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gate2Camp
+namespace EVEBotis
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -25,11 +23,6 @@ namespace Gate2Camp
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Close(object sender, CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

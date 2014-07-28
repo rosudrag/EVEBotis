@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Gate2Camp
+namespace EVEBotis
 {
     /// <summary>
     /// Interaction logic for App.xaml

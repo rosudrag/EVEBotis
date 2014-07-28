@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using GalaSoft.MvvmLight;
 using Gate2Camp.EVEBotLogic;
 using Gate2Camp.EVEBotLogic.Common;
 using InnerSpaceAPI;
@@ -8,12 +9,12 @@ using MicroMvvm;
 
 namespace Gate2Camp.ViewModels
 {
-    public class MainWindowViewModel
+    public class Gate2CampViewModel : ViewModelBase
     {
         /// <summary>
-        ///     Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
+        ///     Initializes a new instance of the <see cref="Gate2CampViewModel" /> class.
         /// </summary>
-        public MainWindowViewModel()
+        public Gate2CampViewModel()
         {
             GateCamping = new GateCamping();
         }
