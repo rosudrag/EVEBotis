@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application x:Class="EVEBotis.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" StartupUri="MainWindow.xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:EVEBotis.ViewModel" xmlns:gate2CampVm="clr-namespace:Gate2Camp.ViewModels;assembly=Gate2Camp" xmlns:gate2CampView="clr-namespace:Gate2Camp.Views;assembly=Gate2Camp">
     <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Core.Implicit.xaml" />
+                <ResourceDictionary Source="Themes/Metro/Dark/MetroDark.MSControls.Toolkit.Implicit.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+            
         <vm:ViewModelLocator x:Key="Locator" />
         <DataTemplate DataType="{x:Type gate2CampVm:Gate2CampViewModel}">
             <gate2CampView:MainView />
         </DataTemplate>
     </Application.Resources>
+    
 </Application>
