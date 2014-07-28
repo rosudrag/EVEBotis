@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="EVEBotis" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
-    <Grid>
+    <Grid Background="{StaticResource BackgroundKey}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/> 
             <ColumnDefinition />
