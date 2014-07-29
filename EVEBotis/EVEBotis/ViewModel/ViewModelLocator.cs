@@ -12,6 +12,9 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using EVE.Core;
+using EVE.Core.DataServices;
+using EVE.Core.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -41,6 +44,8 @@ namespace EVEBotis.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
+            
+            SimpleIoc.Default.Register<IDataService<Player>, PlayerDataService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
         }

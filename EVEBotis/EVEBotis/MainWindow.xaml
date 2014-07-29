@@ -1,7 +1,7 @@
 ﻿<Window x:Class="EVEBotis.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="EVEBotis" Height="350" Width="525"
+        Title="{Binding ApplicationTitle}" Height="350" Width="525"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid Background="{StaticResource BackgroundKey}">
         <Grid.ColumnDefinitions>

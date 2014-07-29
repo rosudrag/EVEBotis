@@ -1,6 +1,8 @@
 #region
 
 using System.Windows.Input;
+using EVE.Core;
+using EVE.Core.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Gate2Camp.ViewModels;
@@ -24,28 +26,57 @@ namespace EVEBotis.ViewModel
     public class MainViewModel : ViewModelBase
     {
         /// <summary>
-        /// The _gate2 camp view model
+        ///     The _gate2 camp view model
         /// </summary>
         private static readonly Gate2CampViewModel _gate2CampViewModel = new Gate2CampViewModel();
+
         /// <summary>
-        /// The _current view model
+        ///     The _application title
+        /// </summary>
+        private string _applicationTitle = string.Empty;
+
+        /// <summary>
+        ///     The _current view model
         /// </summary>
         private ViewModelBase _currentViewModel;
 
         /// <summary>
+        ///     The _player data service
+        /// </summary>
+        private IDataService<Player> _playerDataService;
+
+        /// <summary>
         ///     Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(IDataService<Player> playerDataService)
         {
+            InitialisePlayerDataService(playerDataService);
+
             CurrentViewModel = _gate2CampViewModel;
             Gate2CampViewCommand = new RelayCommand(ExecuteGate2CampViewCommand);
         }
 
         /// <summary>
-        /// Gets or sets the current view model.
+        ///     Gets or sets the application title.
         /// </summary>
         /// <value>
-        /// The current view model.
+        ///     The application title.
+        /// </value>
+        public string ApplicationTitle
+        {
+            get { return _applicationTitle; }
+            set
+            {
+                _applicationTitle = "EVEBotis - " + value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the current view model.
+        /// </summary>
+        /// <value>
+        ///     The current view model.
         /// </value>
         public ViewModelBase CurrentViewModel
         {
@@ -55,20 +86,40 @@ namespace EVEBotis.ViewModel
                 if (_currentViewModel == value)
                     return;
                 _currentViewModel = value;
-                RaisePropertyChanged("CurrentViewModel");
+                RaisePropertyChanged();
             }
         }
 
         /// <summary>
-        /// Gets the gate2 camp view command.
+        ///     Gets the gate2 camp view command.
         /// </summary>
         /// <value>
-        /// The gate2 camp view command.
+        ///     The gate2 camp view command.
         /// </value>
         public ICommand Gate2CampViewCommand { get; private set; }
 
         /// <summary>
-        /// Executes the gate2 camp view command.
+        ///     Initialises the player data service.
+        /// </summary>
+        /// <param name="playerDataService">The player data service.</param>
+        private void InitialisePlayerDataService(IDataService<Player> playerDataService)
+        {
+            _playerDataService = playerDataService;
+            _playerDataService.GetData((player, error) =>
+            {
+                if (error != null || string.IsNullOrEmpty(player.Name))
+                {
+                    ApplicationTitle = "Not in game";
+                }
+                else
+                {
+                    ApplicationTitle = player.Name;
+                }
+            });
+        }
+
+        /// <summary>
+        ///     Executes the gate2 camp view command.
         /// </summary>
         private void ExecuteGate2CampViewCommand()
         {

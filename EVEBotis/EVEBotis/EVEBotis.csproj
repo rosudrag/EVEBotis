@@ -19,7 +19,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>C:\Program Files %28x86%29\InnerSpace\.NET Programs\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -164,6 +164,10 @@
     <ProjectReference Include="..\..\MicroMvvm\MicroMvvm.csproj">
       <Project>{9efe6cbd-df21-436e-9f81-e258bab0b653}</Project>
       <Name>MicroMvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Core\EVE.Core.csproj">
+      <Project>{157a53d2-035b-433a-823c-7fc069219a14}</Project>
+      <Name>EVE.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gate2Camp\Gate2Camp.csproj">
       <Project>{c2c140c1-7cfe-4c67-9ca2-e43fe2885072}</Project>
