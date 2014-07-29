@@ -6,7 +6,7 @@ At the moment it include only a GateCamper module.
 
 Compile it and place executables in the innerspace .net programs folder
 
-Usage: dotnet Gate2Camp
+Usage: dotnet EVEBotis
 
 
 Check the wiki for more info:
