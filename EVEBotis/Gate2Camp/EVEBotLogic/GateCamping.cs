@@ -1,9 +1,13 @@
-﻿using System.Collections.ObjectModel;
+﻿#region
+
+using System.Collections.ObjectModel;
 using System.Timers;
 using Gate2Camp.EVEBotLogic.BusinessLogic;
 using Gate2Camp.EVEBotLogic.Common;
 using Gate2Camp.ViewModels;
 using MicroMvvm;
+
+#endregion
 
 namespace Gate2Camp.EVEBotLogic
 {
@@ -16,21 +20,12 @@ namespace Gate2Camp.EVEBotLogic
         /// </summary>
         public GateCamping()
         {
-            Entities = new ObservableCollection<EntityViewModel>();
-            GateCampingBotBusinessLogic = new GateCampingBotBusinessLogic(BotState.Idle);
+            EngageRules = new EngageRules(100000, true, true);
 
-            InitialiseSelf(GateCampingBotBusinessLogic);
+            Entities = new ObservableCollection<EntityViewModel>();
+            GateCampingBotBusinessLogic = new GateCampingBotBusinessLogic(BotState.Idle, EngageRules);
 
             InitRefreshEntitiesTimer();
-        }
-
-        /// <summary>
-        /// Initialises the self.
-        /// </summary>
-        /// <param name="gateCampingBotBusinessLogic">The gate camping bot business logic.</param>
-        private void InitialiseSelf(GateCampingBotBusinessLogic gateCampingBotBusinessLogic)
-        {
-            ActivePilot = gateCampingBotBusinessLogic.RefreshAndGetActivePilot();
         }
 
         /// <summary>
@@ -42,10 +37,10 @@ namespace Gate2Camp.EVEBotLogic
         private GateCampingBotBusinessLogic GateCampingBotBusinessLogic { get; set; }
 
         /// <summary>
-        /// Gets or sets the refresh entities timer.
+        ///     Gets or sets the refresh entities timer.
         /// </summary>
         /// <value>
-        /// The refresh entities timer.
+        ///     The refresh entities timer.
         /// </value>
         private Timer RefreshEntitiesTimer { get; set; }
 
@@ -70,15 +65,70 @@ namespace Gate2Camp.EVEBotLogic
         public ObservableCollection<EntityViewModel> Entities { get; set; }
 
         /// <summary>
-        ///     Gets or sets the active pilot.
+        ///     Gets or sets a value indicating whether [use propulsion].
         /// </summary>
         /// <value>
-        ///     The active pilot.
+        ///     <c>true</c> if [use propulsion]; otherwise, <c>false</c>.
         /// </value>
-        public string ActivePilot { get; set; }
+        public bool UsePropulsion
+        {
+            get { return EngageRules.UsePropulsion != null && EngageRules.UsePropulsion.Value; }
+            set
+            {
+                EngageRules.UsePropulsion = value;
+                RaisePropertyChanged("EngageRules");
+            }
+        }
 
         /// <summary>
-        /// Initializes the refresh entities timer.
+        ///     Gets or sets the engage rules.
+        /// </summary>
+        /// <value>
+        ///     The engage rules.
+        /// </value>
+        public EngageRules EngageRules { get; set; }
+
+        /// <summary>
+        ///     Sets a value indicating whether [go brawl].
+        /// </summary>
+        /// <value>
+        ///     <c>true</c> if [go brawl]; otherwise, <c>false</c>.
+        /// </value>
+        public bool GoBrawl
+        {
+            get { return EngageRules.GoBrawl != null && EngageRules.GoBrawl.Value; }
+            set
+            {
+                EngageRules.GoBrawl = value;
+                RaisePropertyChanged("EngageRules");
+            }
+        }
+
+        /// <summary>
+        ///     Sets the maximum range.
+        /// </summary>
+        /// <value>
+        ///     The maximum range.
+        /// </value>
+        public double MaxRange
+        {
+            get
+            {
+                if (EngageRules.MaxRange != null)
+                {
+                    return EngageRules.MaxRange.Value;
+                }
+                return 0;
+            }
+            set
+            {
+                EngageRules.MaxRange = value;
+                RaisePropertyChanged("EngageRules");
+            }
+        }
+
+        /// <summary>
+        ///     Initializes the refresh entities timer.
         /// </summary>
         private void InitRefreshEntitiesTimer()
         {

@@ -17,11 +17,11 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// <param name="myMe"></param>
         /// <param name="myEVE">My eve.</param>
         /// <returns></returns>
-        public static ObservableCollection<EntityViewModel> GetLocalGridEntities(Me myMe, EVE.ISXEVE.EVE myEVE)
+        public static ObservableCollection<EntityViewModel> GetLocalGridEntities(Character myMe, EVE.ISXEVE.EVE myEVE)
         {
             try
             {
-                IEnumerable<Entity> entities = myEVE.QueryEntities().Where(x => x.IsPC);
+                IEnumerable<Entity> entities = myEVE.QueryEntities().Where(x => x.IsPC).ToList();
 
                 var oEntities = new ObservableCollection<EntityViewModel>();
 

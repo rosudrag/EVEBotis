@@ -5,16 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300"
-             xmlns:viewModels="clr-namespace:Gate2Camp.ViewModels">
+             xmlns:viewModels="clr-namespace:Gate2Camp.ViewModels"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit">
     <UserControl.DataContext>
         <viewModels:Gate2CampViewModel />
     </UserControl.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*" />
         </Grid.RowDefinitions>
-        <ListView Grid.Row="1" ItemsSource="{Binding GateCamping.Entities}" Margin="10">
+        <ListView Grid.Row="2" ItemsSource="{Binding GateCamping.Entities}" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -32,6 +34,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
         <DockPanel Grid.Row="0">
             <WrapPanel DockPanel.Dock="Left">
                 <Button Margin="10" Content="Start" Command="{Binding RunGateCamp}" />
@@ -40,5 +43,26 @@
 
             <Label Margin="10" Content="{Binding GateCamping.Active}" DockPanel.Dock="Right" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </DockPanel>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <Label Content="Use Propulsion"/>
+                <CheckBox IsChecked="{Binding GateCamping.UsePropulsion, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></CheckBox>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <Label Content="Go Brawl"/>
+                <CheckBox IsChecked="{Binding GateCamping.GoBrawl, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <Label Content="Max Range"/>
+                <xctk:IntegerUpDown Value="{Binding GateCamping.MaxRange, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </UserControl>

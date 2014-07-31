@@ -7,6 +7,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Gate2Camp.ViewModels;
 
+
 #endregion
 
 namespace EVEBotis.ViewModel
@@ -28,7 +29,12 @@ namespace EVEBotis.ViewModel
         /// <summary>
         ///     The _gate2 camp view model
         /// </summary>
-        private static readonly Gate2CampViewModel _gate2CampViewModel = new Gate2CampViewModel();
+        private static readonly Gate2CampViewModel Gate2CampViewModel = new Gate2CampViewModel();
+
+        /// <summary>
+        /// The _mtu deal view model
+        /// </summary>
+        private static readonly MtuDealer.ViewModels.MainViewModel MtuDealerViewModel = new MtuDealer.ViewModels.MainViewModel();
 
         /// <summary>
         ///     The _application title
@@ -52,8 +58,9 @@ namespace EVEBotis.ViewModel
         {
             InitialisePlayerDataService(playerDataService);
 
-            CurrentViewModel = _gate2CampViewModel;
+            CurrentViewModel = Gate2CampViewModel;
             Gate2CampViewCommand = new RelayCommand(ExecuteGate2CampViewCommand);
+            MtuDealerViewCommand = new RelayCommand(ExecuteMtuDealerViewCommand);
         }
 
         /// <summary>
@@ -98,6 +105,8 @@ namespace EVEBotis.ViewModel
         /// </value>
         public ICommand Gate2CampViewCommand { get; private set; }
 
+        public ICommand MtuDealerViewCommand { get; private set; }
+
         /// <summary>
         ///     Initialises the player data service.
         /// </summary>
@@ -123,7 +132,15 @@ namespace EVEBotis.ViewModel
         /// </summary>
         private void ExecuteGate2CampViewCommand()
         {
-            CurrentViewModel = _gate2CampViewModel;
+            CurrentViewModel = Gate2CampViewModel;
+        }
+
+        /// <summary>
+        /// Executes the mtu dealer view command.
+        /// </summary>
+        private void ExecuteMtuDealerViewCommand()
+        {
+            CurrentViewModel = MtuDealerViewModel;
         }
     }
 }

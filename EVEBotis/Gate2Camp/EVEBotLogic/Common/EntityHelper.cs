@@ -17,7 +17,7 @@ namespace Gate2Camp.EVEBotLogic.Common
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
         /// <exception cref="System.NotImplementedException"></exception>
-        public static int ComputeStandings(Me myMe, Entity entity)
+        public static int ComputeStandings(Character myMe, Entity entity)
         {
             long eCharId = entity.CharID;
 
@@ -62,22 +62,22 @@ namespace Gate2Camp.EVEBotLogic.Common
         /// <summary>
         ///     Finds the closest neut.
         /// </summary>
-        /// <param name="targettedNeuts">The targetted neuts.</param>
+        /// <param name="neuts">The targetted neuts.</param>
         /// <returns></returns>
-        public static EntityViewModel FindClosestEntity(IEnumerable<EntityViewModel> targettedNeuts)
+        public static EntityViewModel FindClosestEntity(IEnumerable<EntityViewModel> neuts)
         {
             double maxDistance = 999999;
 
             EntityViewModel result = null;
 
-            foreach (EntityViewModel targettedNeut in targettedNeuts)
+            foreach (EntityViewModel neut in neuts)
             {
-                double distance = targettedNeut.EntityDistanceTo;
+                double distance = neut.EntityDistanceTo;
 
                 if (distance < maxDistance)
                 {
                     maxDistance = distance;
-                    result = targettedNeut;
+                    result = neut;
                 }
             }
 

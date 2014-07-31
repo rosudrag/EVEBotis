@@ -24,9 +24,12 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         ///     Initializes a new instance of the <see cref="GateCampingBotBusinessLogic" /> class.
         /// </summary>
         /// <param name="state">The state.</param>
-        public GateCampingBotBusinessLogic(BotState state)
+        /// <param name="engageRules"></param>
+        public GateCampingBotBusinessLogic(BotState state, EngageRules engageRules)
         {
             CurrentBotState = state;
+            EngageRules = engageRules;
+
             Entities = new ObservableCollection<EntityViewModel>();
 
             AttachOnFrame();
@@ -48,7 +51,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// <value>
         ///     MyMe.
         /// </value>
-        private Me MyMe { get; set; }
+        private Character MyMe { get; set; }
 
         /// <summary>
         ///     Gets or sets the state of the current bot.
@@ -57,6 +60,14 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         ///     The state of the current bot.
         /// </value>
         public BotState CurrentBotState { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether [do tackle].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [do tackle]; otherwise, <c>false</c>.
+        /// </value>
+        public EngageRules EngageRules{ get; set; }
 
         /// <summary>
         ///     Gets or sets the entities.
@@ -91,10 +102,16 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         {
             try
             {
-                MyEve = new EVE.ISXEVE.EVE();
-                MyMe = new Me();
+                var ext = new Extension();
+                MyEve = ext.EVE();
+                MyMe = ext.Me;
 
                 DoWork(MyMe, MyEve);
+
+                //DEBUG
+                //InnerSpace.Echo("GO BRAWL: " + EngageRules.GoBrawl);
+                //InnerSpace.Echo("Use Prop: " + EngageRules.UsePropulsion);
+                //InnerSpace.Echo("Max Range: " + EngageRules.MaxRange);
             }
             catch (Exception exp)
             {
@@ -107,7 +124,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// </summary>
         /// <param name="myMe">My me.</param>
         /// <param name="myEVE">My eve.</param>
-        private void DoWork(Me myMe, EVE.ISXEVE.EVE myEVE)
+        private void DoWork(Character myMe, EVE.ISXEVE.EVE myEVE)
         {
             if (CurrentBotState == BotState.Active)
             {
@@ -115,7 +132,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
                 {
                     Entities = EntityRepository.GetLocalGridEntities(myMe, myEVE);
 
-                    CombatHelper.DoTackle(myMe, myEVE, Entities);
+                    CombatHelper.Engage(myMe, myEVE, Entities, EngageRules);
                 }
                 catch (Exception exc)
                 {

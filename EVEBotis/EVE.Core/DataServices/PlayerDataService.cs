@@ -37,7 +37,7 @@ namespace EVE.Core.DataServices
         {
             var player = new Player();
 
-            Frame.Wait(false);
+            Frame.Wait(true);
 
             var me = new Me();
             var isxeve = new EVE.ISXEVE.EVE();

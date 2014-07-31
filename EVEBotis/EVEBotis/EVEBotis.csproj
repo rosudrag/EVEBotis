@@ -173,6 +173,14 @@
       <Project>{c2c140c1-7cfe-4c67-9ca2-e43fe2885072}</Project>
       <Name>Gate2Camp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MtuDealer\MtuDealer.csproj">
+      <Project>{64e3e07c-8740-4e5e-89e7-a734ce0e3140}</Project>
+      <Name>MtuDealer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PosBash\PosBash.csproj">
+      <Project>{02bf5a01-02a0-424a-8a45-319570f9e525}</Project>
+      <Name>PosBash</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

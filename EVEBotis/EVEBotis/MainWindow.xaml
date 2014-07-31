@@ -14,6 +14,7 @@
         <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0.1">
             <StackPanel>
                 <Button Command="{Binding Gate2CampViewCommand}" Content="Gate2Camp" Margin="5,5,5,0"/>
+                <Button Command="{Binding MtuDealerViewCommand}" Content="Mtu Dealer" Margin="5,5,5,0"/>
             </StackPanel>
         </Border>
 
