@@ -1,9 +1,11 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EVE.ISXEVE;
 using Gate2Camp.ViewModels;
+using Xceed.Wpf.DataGrid.Converters;
 
 #endregion
 
@@ -29,15 +31,25 @@ namespace Gate2Camp.EVEBotLogic.Common
         {
             var allNeutrals =
                 entities.Where(
-                    x => x.EntityStandings <= 0 && x.EntityDistanceTo <= (engageRules.MaxRange ?? DefaultEngageRange))
+                        x =>
+                            x.Entity.IsValid &&
+                            x.EntityStandings <= 0 &&
+                            x.EntityDistanceTo <= (engageRules.MaxRange ?? DefaultEngageRange)
+                        )
                     .ToList();
 
             if (!allNeutrals.Any())
             {
                 return;
             }
+            
+            //sort the capsules to the end
+            allNeutrals.Sort();
 
-            IEnumerable<EntityViewModel> targettedNeuts = TargetNeuts(allNeutrals).ToList();
+            //Take a limited nr of targets
+            var limitedTargets = allNeutrals.GetRange(0, (int) myMe.MaxLockedTargets);
+
+            IEnumerable<EntityViewModel> targettedNeuts = TargetNeuts(limitedTargets).ToList();
 
             //Tackle closest targetted neut 
             EntityViewModel closestTargetedNeut = null;
@@ -74,6 +86,7 @@ namespace Gate2Camp.EVEBotLogic.Common
             }
         }
 
+
         /// <summary>
         ///     Activates the tackle modules.
         /// </summary>
@@ -92,7 +105,15 @@ namespace Gate2Camp.EVEBotLogic.Common
 
                 var name = mItem.Name.ToLower();
 
-                if (name.Contains("booster"))
+                if (name.Contains("sensor booster"))
+                {
+                    module.Activate();
+                }
+                else if (name.Contains("booster"))
+                {
+                    //skip
+                }
+                else if (name.Contains("repairer)"))
                 {
                     //skip
                 }
@@ -101,6 +122,10 @@ namespace Gate2Camp.EVEBotLogic.Common
                     module.Deactivate();
                 }
                 else if (name.Contains("cyno"))
+                {
+                    //skip
+                }
+                else if (name.Contains("bomb"))
                 {
                     //skip
                 }

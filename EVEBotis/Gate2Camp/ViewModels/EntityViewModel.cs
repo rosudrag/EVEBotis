@@ -1,9 +1,10 @@
-﻿using EVE.ISXEVE;
+﻿using System;
+using EVE.ISXEVE;
 using MicroMvvm;
 
 namespace Gate2Camp.ViewModels
 {
-    public class EntityViewModel : ObservableObject
+    public class EntityViewModel : ObservableObject , IComparable<EntityViewModel>
     {
         /// <summary>
         ///     The entity
@@ -52,5 +53,15 @@ namespace Gate2Camp.ViewModels
         }
 
         public int EntityStandings { get; set; }
+
+        public int CompareTo(EntityViewModel other)
+        {
+            if (EntityGroup.ToLower().Equals("capsule"))
+            {
+                return -2;
+            }
+
+            return String.Compare(EntityGroup, other.EntityGroup, StringComparison.Ordinal);
+        }
     }
 }

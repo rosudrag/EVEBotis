@@ -16,11 +16,6 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     public class GateCampingBotBusinessLogic : IBotBusinessLogic
     {
         /// <summary>
-        ///     The _one time setup
-        /// </summary>
-        private bool _oneTimeSetup;
-
-        /// <summary>
         ///     Initializes a new instance of the <see cref="GateCampingBotBusinessLogic" /> class.
         /// </summary>
         /// <param name="state">The state.</param>
@@ -156,8 +151,6 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
             MyEve.RefreshBookmarks();
 
             ActivePilot = MyMe.Name;
-
-            _oneTimeSetup = true;
 
             Frame.Unlock();
         }

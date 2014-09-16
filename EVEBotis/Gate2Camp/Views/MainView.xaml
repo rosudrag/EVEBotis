@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="*"/>
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
         <ListView Grid.Row="2" ItemsSource="{Binding GateCamping.Entities}" Margin="10">
             <ListView.ItemTemplate>

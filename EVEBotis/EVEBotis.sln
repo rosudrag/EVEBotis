@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PosBash", "PosBash\PosBash.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtuDealer", "MtuDealer\MtuDealer.csproj", "{64E3E07C-8740-4E5E-89E7-A734CE0E3140}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestingApi", "TestingApi", "{2EED633C-6940-4657-B32D-157E46713C0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingApi.Scanners", "TestingApi.Scanners\TestingApi.Scanners.csproj", "{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -91,6 +95,16 @@ Global
 		{64E3E07C-8740-4E5E-89E7-A734CE0E3140}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{64E3E07C-8740-4E5E-89E7-A734CE0E3140}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{64E3E07C-8740-4E5E-89E7-A734CE0E3140}.Release|x86.ActiveCfg = Release|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,5 +116,7 @@ Global
 		{157A53D2-035B-433A-823C-7FC069219A14} = {3C55BD40-0689-4A98-B9A4-DCD206EAB0DE}
 		{02BF5A01-02A0-424A-8A45-319570F9E525} = {0AB17A72-47C1-4845-A5D5-B44E164AB4A1}
 		{64E3E07C-8740-4E5E-89E7-A734CE0E3140} = {0AB17A72-47C1-4845-A5D5-B44E164AB4A1}
+		{2EED633C-6940-4657-B32D-157E46713C0F} = {0AB17A72-47C1-4845-A5D5-B44E164AB4A1}
+		{4B4D9B4E-92C1-42F6-8AB8-33B96BC065DA} = {2EED633C-6940-4657-B32D-157E46713C0F}
 	EndGlobalSection
 EndGlobal
