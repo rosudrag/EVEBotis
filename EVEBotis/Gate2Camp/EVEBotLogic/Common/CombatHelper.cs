@@ -2,10 +2,12 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using EVE.ISXEVE;
 using Gate2Camp.ViewModels;
 using Xceed.Wpf.DataGrid.Converters;
+using EVE = EVE.ISXEVE.EVE;
 
 #endregion
 
@@ -20,36 +22,15 @@ namespace Gate2Camp.EVEBotLogic.Common
         private const bool DefaultActivatePropulsion = true;
 
         /// <summary>
-        ///     Does the tackle.
+        /// Does the tackle and returns the current valid engageable targets
         /// </summary>
         /// <param name="myMe">My me.</param>
         /// <param name="myEve">My eve.</param>
         /// <param name="entities">The entities.</param>
-        /// <param name="engageRules"></param>
-        public static void Engage(Character myMe, EVE.ISXEVE.EVE myEve, IEnumerable<EntityViewModel> entities,
-            EngageRules engageRules)
+        /// <param name="engageRules">The engage rules.</param>
+        public static void Engage(Character myMe, global::EVE.ISXEVE.EVE myEve, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
         {
-            var allNeutrals =
-                entities.Where(
-                        x =>
-                            x.Entity.IsValid &&
-                            x.EntityStandings <= 0 &&
-                            x.EntityDistanceTo <= (engageRules.MaxRange ?? DefaultEngageRange)
-                        )
-                    .ToList();
-
-            if (!allNeutrals.Any())
-            {
-                return;
-            }
-            
-            //sort the capsules to the end
-            allNeutrals.Sort();
-
-            //Take a limited nr of targets
-            var limitedTargets = allNeutrals.GetRange(0, (int) myMe.MaxLockedTargets);
-
-            IEnumerable<EntityViewModel> targettedNeuts = TargetNeuts(limitedTargets).ToList();
+            IEnumerable<EntityViewModel> targettedNeuts = TargetNeuts(entities).ToList();
 
             //Tackle closest targetted neut 
             EntityViewModel closestTargetedNeut = null;
@@ -71,7 +52,7 @@ namespace Gate2Camp.EVEBotLogic.Common
             }
             else
             {
-                var closestNeutNotTargetted = EntityHelper.FindClosestEntity(allNeutrals);
+                var closestNeutNotTargetted = EntityHelper.FindClosestEntity(entities);
 
                 if (closestNeutNotTargetted != null)
                 {
@@ -84,6 +65,7 @@ namespace Gate2Camp.EVEBotLogic.Common
                     }
                 }
             }
+            return;
         }
 
 
@@ -94,7 +76,7 @@ namespace Gate2Camp.EVEBotLogic.Common
         /// <param name="myEve">My eve.</param>
         /// <param name="enemy">The enemy.</param>
         /// <param name="engageRules"></param>
-        private static void ActivateModules(Character myMe, EVE.ISXEVE.EVE myEve, EntityViewModel enemy,
+        private static void ActivateModules(Character myMe, global::EVE.ISXEVE.EVE myEve, EntityViewModel enemy,
             EngageRules engageRules)
         {
             var modules = myMe.Ship.GetModules();
@@ -176,6 +158,36 @@ namespace Gate2Camp.EVEBotLogic.Common
                     yield return neut;
                 }
             }
+        }
+
+        /// <summary>
+        /// Finds the engageable targets.
+        /// </summary>
+        /// <param name="myMe">My me.</param>
+        /// <param name="myEVE">My eve.</param>
+        /// <param name="entities">The entities.</param>
+        /// <param name="engageRules">The engage rules.</param>
+        /// <returns></returns>
+        public static IEnumerable<EntityViewModel> FindEngageableTargets(Character myMe, global::EVE.ISXEVE.EVE myEVE, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
+        {
+            var allNeutrals = entities.Where(
+                                        x =>
+                                            x.Entity.IsValid &&
+                                            x.EntityStandings <= 0 &&
+                                            x.EntityDistanceTo <= (engageRules.MaxRange ?? DefaultEngageRange)
+                                        );
+
+            if (!allNeutrals.Any())
+            {
+                return new List<EntityViewModel>();
+            }
+
+            //sort by capsule
+            allNeutrals = allNeutrals.OrderBy(x => x.EntityGroup);
+
+            var limitedTargets = allNeutrals.Take((int) myMe.MaxLockedTargets);
+
+            return limitedTargets;
         }
     }
 }

@@ -17,13 +17,13 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// <param name="myMe"></param>
         /// <param name="myEVE">My eve.</param>
         /// <returns></returns>
-        public static ObservableCollection<EntityViewModel> GetLocalGridEntities(Character myMe, EVE.ISXEVE.EVE myEVE)
+        public static IEnumerable<EntityViewModel> GetLocalGridEntities(Character myMe, EVE.ISXEVE.EVE myEVE)
         {
             try
             {
                 IEnumerable<Entity> entities = myEVE.QueryEntities().Where(x => x.IsPC).ToList();
 
-                var oEntities = new ObservableCollection<EntityViewModel>();
+                var oEntities = new List<EntityViewModel>();
 
                 foreach (Entity entity in entities)
                 {
@@ -38,7 +38,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
             {
                 InnerSpace.Echo("GET LOCAL GRID ENTITIES ERROR :" + e.Message);
 
-                return new ObservableCollection<EntityViewModel>();
+                return new List<EntityViewModel>();
             }
         }
     }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using EVE.ISXEVE;
 using Gate2Camp.EVEBotLogic.Common;
 using Gate2Camp.ViewModels;
@@ -125,10 +126,15 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
             {
                 try
                 {
-                    Entities = EntityRepository.GetLocalGridEntities(myMe, myEVE);
+                    var allEntities = EntityRepository.GetLocalGridEntities(myMe, myEVE);
 
-                    CombatHelper.Engage(myMe, myEVE, Entities, EngageRules);
+                    var engageableTargets = CombatHelper.FindEngageableTargets(myMe, myEVE, allEntities, EngageRules).ToList();
+
+                    Entities = new ObservableCollection<EntityViewModel>(engageableTargets);
+
+                    CombatHelper.Engage(myMe, myEVE, engageableTargets, EngageRules);
                 }
+
                 catch (Exception exc)
                 {
                     InnerSpace.Echo("DO WORK ERROR: " + exc.Message);
