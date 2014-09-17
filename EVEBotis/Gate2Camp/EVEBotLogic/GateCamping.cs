@@ -2,10 +2,11 @@
 
 using System.Collections.ObjectModel;
 using System.Timers;
+using EVE.Core.Model;
+using GalaSoft.MvvmLight;
 using Gate2Camp.EVEBotLogic.BusinessLogic;
 using Gate2Camp.EVEBotLogic.Common;
-using Gate2Camp.ViewModels;
-using MicroMvvm;
+
 
 #endregion
 

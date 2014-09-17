@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EVE.Cache;
+using EVE.Core.Model;
 using EVE.ISXEVE;
 using Gate2Camp.EVEBotLogic.Common;
 using Gate2Camp.ViewModels;
@@ -26,10 +28,35 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
                 var oEntities = new List<EntityViewModel>();
 
                 foreach (Entity entity in entities)
-                {
+                {                  
                     int standings = EntityHelper.ComputeStandings(myMe, entity);
 
-                    oEntities.Add(new EntityViewModel {Entity = entity, EntityStandings = standings});
+                    var newEntity = new EntityViewModel {Entity = entity, EntityStandings = standings};
+
+                    var cachedEntity = EntityCache.Get(newEntity);
+
+                    if (cachedEntity == null)
+                    {
+                        EntityCache.Add(newEntity);
+                    }
+                    else
+                    {
+                        if (cachedEntity.EntityStandings != newEntity.EntityStandings)
+                        {
+                            if (newEntity.EntityStandings > cachedEntity.EntityStandings)
+                            {
+                                EntityCache.Remove(newEntity);
+                                EntityCache.Add(newEntity);
+                            }
+
+                            if (newEntity.EntityStandings == 0 && cachedEntity.EntityStandings != 0)
+                            {
+                                newEntity.EntityStandings = cachedEntity.EntityStandings;
+                            }
+                        }
+                    }
+
+                    oEntities.Add(newEntity);
                 }
 
                 return oEntities;

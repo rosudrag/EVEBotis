@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using EVE.Core.Model;
 using EVE.ISXEVE;
 using Gate2Camp.ViewModels;
 using LavishScriptAPI;

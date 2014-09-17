@@ -3,9 +3,9 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EVE.Core.Model;
 using EVE.ISXEVE;
 using Gate2Camp.EVEBotLogic.Common;
-using Gate2Camp.ViewModels;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 using LavishVMAPI;

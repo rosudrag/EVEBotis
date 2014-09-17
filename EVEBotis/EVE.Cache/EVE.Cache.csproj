@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{157A53D2-035B-433A-823C-7FC069219A14}</ProjectGuid>
+    <ProjectGuid>{F2C395A4-3B1F-41E9-9A8B-6099B8784B29}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EVE.Core</RootNamespace>
-    <AssemblyName>EVE.Core</AssemblyName>
+    <RootNamespace>EVE.Cache</RootNamespace>
+    <AssemblyName>EVE.Cache</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,6 +52,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.4.4.32.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -62,11 +63,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataServices\PlayerDataService.cs" />
-    <Compile Include="IDataService.cs" />
-    <Compile Include="Model\EntityViewModel.cs" />
-    <Compile Include="Model\Player.cs" />
+    <Compile Include="EntityCache.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EVE.Core\EVE.Core.csproj">
+      <Project>{157A53D2-035B-433A-823C-7FC069219A14}</Project>
+      <Name>EVE.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

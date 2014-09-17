@@ -1,8 +1,8 @@
 ﻿using System;
 using EVE.ISXEVE;
-using MicroMvvm;
+using GalaSoft.MvvmLight;
 
-namespace Gate2Camp.ViewModels
+namespace EVE.Core.Model
 {
     public class EntityViewModel : ObservableObject , IComparable<EntityViewModel>
     {
@@ -24,6 +24,17 @@ namespace Gate2Camp.ViewModels
             {
                 entity = value;
             }
+        }
+
+        /// <summary>
+        /// Gets the entity identifier.
+        /// </summary>
+        /// <value>
+        /// The entity identifier.
+        /// </value>
+        public string EntityId
+        {
+            get { return Convert.ToString(entity.ID); }
         }
 
         /// <summary>

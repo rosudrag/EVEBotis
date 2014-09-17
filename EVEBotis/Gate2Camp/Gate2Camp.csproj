@@ -109,7 +109,6 @@
     <Compile Include="EVEBotLogic\Common\EntityHelper.cs" />
     <Compile Include="EVEBotLogic\GateCamping.cs" />
     <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="ViewModels\EntityViewModel.cs" />
     <Compile Include="ViewModels\Gate2CampViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -152,9 +151,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MicroMvvm\MicroMvvm.csproj">
-      <Project>{9efe6cbd-df21-436e-9f81-e258bab0b653}</Project>
-      <Name>MicroMvvm</Name>
+    <ProjectReference Include="..\EVE.Cache\EVE.Cache.csproj">
+      <Project>{f2c395a4-3b1f-41e9-9a8b-6099b8784b29}</Project>
+      <Name>EVE.Cache</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EVE.Core\EVE.Core.csproj">
+      <Project>{157A53D2-035B-433A-823C-7FC069219A14}</Project>
+      <Name>EVE.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
