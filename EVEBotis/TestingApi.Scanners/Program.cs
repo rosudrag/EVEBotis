@@ -14,6 +14,32 @@ namespace TestingApi.Scanners
     {
         static void Main(string[] args)
         {
+            //SysScan();
+            ObjectScan();
+        }
+
+        private static void ObjectScan()
+        {
+            Frame.Wait(true);
+
+            var ext = new EVE.ISXEVE.Extension();
+            var eve = ext.EVE();
+
+            var entities = eve.QueryEntities();
+
+            foreach (var entity in entities)
+            {
+                if (entity.Name.ToLower().Contains("corp"))
+                {
+                    InnerSpace.Echo(entity.ID + " " + entity.Name);
+                }
+            }
+
+            Frame.Unlock();
+        }
+
+        private static void SysScan()
+        {
             Frame.Wait(true);
 
             var ext = new EVE.ISXEVE.Extension();
