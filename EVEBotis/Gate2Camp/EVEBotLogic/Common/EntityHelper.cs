@@ -2,6 +2,8 @@
 using System.Linq;
 using EVE.Core.Model;
 using EVE.ISXEVE;
+using EVE.ISXEVE.DataTypes;
+using EVE.ISXEVE.TopLevelObjects;
 using Gate2Camp.ViewModels;
 using LavishScriptAPI;
 

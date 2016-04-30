@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Configuration;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using DataAccess.Main.Models;
-using EVE.ISXEVE;
 using InnerSpaceAPI;
-using LavishScriptAPI;
 using LavishVMAPI;
 using RestSharp;
 using System.Net.Http;
 using Core.Common;
-using EVE = EVE.ISXEVE.EVE;
+using EVE.ISXEVE.Extensions;
 
 namespace Service.IntelClient
 {
-    public class IntelClientService : IService
+  public class IntelClientService : IService
     {
         /// <summary>
         /// Gets or sets the rest client.

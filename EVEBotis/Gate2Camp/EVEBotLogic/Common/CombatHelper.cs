@@ -6,9 +6,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using EVE.Core.Model;
 using EVE.ISXEVE;
+using EVE.ISXEVE.DataTypes;
 using Gate2Camp.ViewModels;
 using Xceed.Wpf.DataGrid.Converters;
-using EVE = EVE.ISXEVE.EVE;
+using EVE = EVE.ISXEVE.TopLevelObjects.EVE;
 
 #endregion
 
@@ -29,7 +30,7 @@ namespace Gate2Camp.EVEBotLogic.Common
         /// <param name="myEve">My eve.</param>
         /// <param name="entities">The entities.</param>
         /// <param name="engageRules">The engage rules.</param>
-        public static void Engage(Character myMe, global::EVE.ISXEVE.EVE myEve, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
+        public static void Engage(Character myMe, global::EVE.ISXEVE.TopLevelObjects.EVE myEve, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
         {
             IEnumerable<EntityViewModel> targettedNeuts = TargetNeuts(entities).ToList();
 
@@ -77,7 +78,7 @@ namespace Gate2Camp.EVEBotLogic.Common
         /// <param name="myEve">My eve.</param>
         /// <param name="enemy">The enemy.</param>
         /// <param name="engageRules"></param>
-        private static void ActivateModules(Character myMe, global::EVE.ISXEVE.EVE myEve, EntityViewModel enemy,
+        private static void ActivateModules(Character myMe, global::EVE.ISXEVE.TopLevelObjects.EVE myEve, EntityViewModel enemy,
             EngageRules engageRules)
         {
             var modules = myMe.Ship.GetModules();
@@ -169,7 +170,7 @@ namespace Gate2Camp.EVEBotLogic.Common
         /// <param name="entities">The entities.</param>
         /// <param name="engageRules">The engage rules.</param>
         /// <returns></returns>
-        public static IEnumerable<EntityViewModel> FindEngageableTargets(Character myMe, global::EVE.ISXEVE.EVE myEVE, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
+        public static IEnumerable<EntityViewModel> FindEngageableTargets(Character myMe, global::EVE.ISXEVE.TopLevelObjects.EVE myEVE, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
         {
             var allNeutrals = entities.Where(
                                         x =>

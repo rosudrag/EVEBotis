@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using EVE.Core.Model;
 using EVE.ISXEVE;
+using EVE.ISXEVE.DataTypes;
+using EVE.ISXEVE.Extensions;
 using Gate2Camp.EVEBotLogic.Common;
 using InnerSpaceAPI;
 using LavishScriptAPI;
@@ -39,7 +41,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// <value>
         ///     My eve.
         /// </value>
-        private EVE.ISXEVE.EVE MyEve { get; set; }
+        private EVE.ISXEVE.TopLevelObjects.EVE MyEve { get; set; }
 
         /// <summary>
         ///     Gets or sets me.
@@ -120,7 +122,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// </summary>
         /// <param name="myMe">My me.</param>
         /// <param name="myEVE">My eve.</param>
-        private void DoWork(Character myMe, EVE.ISXEVE.EVE myEVE)
+        private void DoWork(Character myMe, EVE.ISXEVE.TopLevelObjects.EVE myEVE)
         {
             if (CurrentBotState == BotState.Active)
             {
@@ -150,7 +152,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         {
             Frame.Wait(true);
 
-            MyEve = new EVE.ISXEVE.EVE();
+            MyEve = new EVE.ISXEVE.TopLevelObjects.EVE();
             MyMe = new Me();
 
             MyEve.RefreshStandings();

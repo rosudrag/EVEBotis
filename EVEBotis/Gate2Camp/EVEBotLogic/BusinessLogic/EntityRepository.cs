@@ -5,6 +5,8 @@ using System.Linq;
 using EVE.Cache;
 using EVE.Core.Model;
 using EVE.ISXEVE;
+using EVE.ISXEVE.DataTypes;
+using EVE.ISXEVE.TopLevelObjects;
 using Gate2Camp.EVEBotLogic.Common;
 using Gate2Camp.ViewModels;
 using InnerSpaceAPI;
@@ -19,11 +21,11 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
         /// <param name="myMe"></param>
         /// <param name="myEVE">My eve.</param>
         /// <returns></returns>
-        public static IEnumerable<EntityViewModel> GetLocalGridEntities(Character myMe, EVE.ISXEVE.EVE myEVE)
+        public static IEnumerable<EntityViewModel> GetLocalGridEntities(Character myMe, EVE.ISXEVE.TopLevelObjects.EVE myEVE)
         {
             try
             {
-                IEnumerable<Entity> entities = myEVE.QueryEntities().Where(x => x.IsPC).ToList();
+                IEnumerable<Entity> entities = myEVE.QueryEntities().Where(x => x.IsPc).ToList();
 
                 var oEntities = new List<EntityViewModel>();
 

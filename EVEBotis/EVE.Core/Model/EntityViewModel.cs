@@ -1,5 +1,6 @@
 ﻿using System;
 using EVE.ISXEVE;
+using EVE.ISXEVE.TopLevelObjects;
 using GalaSoft.MvvmLight;
 
 namespace EVE.Core.Model

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EVE.Core.Model;
 using EVE.ISXEVE;
+using EVE.ISXEVE.DataTypes;
 using LavishVMAPI;
 
 namespace EVE.Core.DataServices
@@ -40,7 +41,7 @@ namespace EVE.Core.DataServices
             Frame.Wait(true);
 
             var me = new Me();
-            var isxeve = new EVE.ISXEVE.EVE();
+            var isxeve = new EVE.ISXEVE.TopLevelObjects.EVE();
 
             player.Name = me.Name;
 
