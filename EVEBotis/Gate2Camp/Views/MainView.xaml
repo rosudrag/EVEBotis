@@ -49,6 +49,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
                 <Label Content="Use Propulsion"/>
@@ -57,8 +58,12 @@
             <StackPanel Grid.Column="1">
                 <Label Content="Go Brawl"/>
                 <CheckBox IsChecked="{Binding GateCamping.GoBrawl, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
-            </StackPanel>
-            <StackPanel Grid.Column="2">
+      </StackPanel>
+      <StackPanel Grid.Column="2">
+        <Label Content="Use Repairer Modules"/>
+        <CheckBox IsChecked="{Binding GateCamping.UseRepairer, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+      </StackPanel>
+      <StackPanel Grid.Column="3">
                 <Label Content="Max Range"/>
                 <xctk:IntegerUpDown Value="{Binding GateCamping.MaxRange, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
             </StackPanel>

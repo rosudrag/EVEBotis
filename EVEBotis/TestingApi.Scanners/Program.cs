@@ -5,6 +5,8 @@ using System.Runtime.Versioning;
 using System.Text;
 using System.Threading.Tasks;
 using EVE.ISXEVE;
+using EVE.ISXEVE.DataTypes;
+using EVE.ISXEVE.Extensions;
 using InnerSpaceAPI;
 using LavishVMAPI;
 
@@ -22,7 +24,7 @@ namespace TestingApi.Scanners
         {
             Frame.Wait(true);
 
-            var ext = new EVE.ISXEVE.Extension();
+            var ext = new Extension();
             var eve = ext.EVE();
 
             var entities = eve.QueryEntities();

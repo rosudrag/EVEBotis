@@ -29,8 +29,7 @@ namespace Gate2Camp.EVEBotLogic.Common
                 return 11;
             }
 
-            if (entity.IsOwnedByAllianceMember || entity.IsOwnedByCorpMember ||
-                !LavishScriptObject.IsNullOrInvalid(entity.Owner.ToFleetMember))
+            if (entity.IsOwnedByAllianceMember || entity.IsOwnedByCorpMember || LavishScriptObject.IsNullOrInvalid(entity.Owner.ToFleetMember))
             {
                 return 10;
             }
