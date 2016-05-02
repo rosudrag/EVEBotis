@@ -4,7 +4,6 @@ using System.Linq;
 using EVE.Cache;
 using EVE.Core.Model;
 using EVE.ISXEVE.DataTypes;
-using EVE.ISXEVE.TopLevelObjects;
 using Gate2Camp.EVEBotLogic.Common;
 using InnerSpaceAPI;
 
@@ -22,7 +21,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     {
       try
       {
-        IEnumerable<Entity> entities = myEVE.QueryEntities().Where(x => x.IsPc).ToList();
+        var entities = myEVE.QueryEntities().Where(entity => entity.IsPc && myMe.CharID != entity.CharID);
 
         var oEntities = new List<EntityViewModel>();
 

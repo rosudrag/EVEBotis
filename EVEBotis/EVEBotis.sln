@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gate2Camp", "Gate2Camp\Gate2Camp.csproj", "{C2C140C1-7CFE-4C67-9CA2-E43FE2885072}"
 EndProject
@@ -36,6 +36,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Common", "Core.Common\Core.Common.csproj", "{8D841617-53FB-4BF1-B976-70377E91E6D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EveIntel", "EveIntel\EveIntel.csproj", "{AD2705B4-DD4A-4FFF-BB14-7CC68F4A6E15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestingApi.Runner", "TestingApi.Runner\TestingApi.Runner.csproj", "{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -157,6 +159,18 @@ Global
 		{AD2705B4-DD4A-4FFF-BB14-7CC68F4A6E15}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{AD2705B4-DD4A-4FFF-BB14-7CC68F4A6E15}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{AD2705B4-DD4A-4FFF-BB14-7CC68F4A6E15}.Release|x86.ActiveCfg = Release|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Debug|x86.Build.0 = Debug|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Release|x86.ActiveCfg = Release|Any CPU
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,5 +187,6 @@ Global
 		{F2C395A4-3B1F-41E9-9A8B-6099B8784B29} = {3C55BD40-0689-4A98-B9A4-DCD206EAB0DE}
 		{75396642-3E31-4BFF-AB62-5A3618493BB1} = {3AF3E6A4-D014-4C5B-A911-771B7E518C01}
 		{8D841617-53FB-4BF1-B976-70377E91E6D3} = {CED202A0-FAEB-4608-A458-50067FE0CEFF}
+		{341C1754-CD96-4AF8-A7D5-F8AC5C39A35F} = {2EED633C-6940-4657-B32D-157E46713C0F}
 	EndGlobalSection
 EndGlobal

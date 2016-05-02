@@ -104,6 +104,7 @@
     <Compile Include="EVEBotLogic\BusinessLogic\EntityRepository.cs" />
     <Compile Include="EVEBotLogic\BusinessLogic\GateCampingBotBusinessLogic.cs" />
     <Compile Include="EVEBotLogic\Common\EngageRules.cs" />
+    <Compile Include="EVEBotLogic\Common\EntityExtensions.cs" />
     <Compile Include="EVEBotLogic\Common\IBotBusinessLogic.cs" />
     <Compile Include="EVEBotLogic\Common\BotState.cs" />
     <Compile Include="EVEBotLogic\Common\EntityHelper.cs" />
