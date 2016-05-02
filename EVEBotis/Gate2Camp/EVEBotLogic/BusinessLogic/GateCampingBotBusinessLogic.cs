@@ -3,6 +3,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EVE.Core;
 using EVE.Core.Model;
 using EVE.ISXEVE.DataTypes;
 using EVE.ISXEVE.Extensions;
@@ -26,12 +27,15 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     {
       CurrentBotState = state;
       EngageRules = engageRules;
+      FrameActionScheduler = new FrameActionsScheduler(15);
 
       Entities = new ObservableCollection<EntityViewModel>();
 
       OneTimeSetup();
       AttachOnFrame();
     }
+
+    public IFrameActionsScheduler FrameActionScheduler { get; set; }
 
     /// <summary>
     ///   Gets or sets my eve.
@@ -96,22 +100,26 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     /// <param name="e">The <see cref="LSEventArgs" /> instance containing the event data.</param>
     private void DoThisOnFrame(object sender, LSEventArgs e)
     {
-      try
+      if (FrameActionScheduler.TryExecute())
       {
-        var ext = new Extension();
-        MyEve = ext.EVE();
-        MyMe = ext.Me;
+        try
+        {
+          var ext = new Extension();
+          MyEve = ext.EVE();
+          MyMe = ext.Me;
 
-        DoWork(MyMe, MyEve);
+          DoWork(MyMe, MyEve);
 
-        //DEBUG
-        //InnerSpace.Echo("GO BRAWL: " + EngageRules.GoBrawl);
-        //InnerSpace.Echo("Use Prop: " + EngageRules.UsePropulsion);
-        //InnerSpace.Echo("Max Range: " + EngageRules.MaxRange);
-      }
-      catch (Exception exp)
-      {
-        InnerSpace.Echo(exp.Message);
+          //DEBUG
+          //InnerSpace.Echo("GO BRAWL: " + EngageRules.GoBrawl);
+          //InnerSpace.Echo("Use Prop: " + EngageRules.UsePropulsion);
+          //InnerSpace.Echo("Use rep: " + EngageRules.UseRepairer);
+          //InnerSpace.Echo("Max Range: " + EngageRules.MaxRange);
+        }
+        catch (Exception exp)
+        {
+          InnerSpace.Echo(exp.Message);
+        }
       }
     }
 
@@ -130,7 +138,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
 
           var engageableTargets = CombatHelper.FindEngageableTargets(myMe, myEVE, allEntities, EngageRules).ToList();
 
-          Entities = new ObservableCollection<EntityViewModel>(engageableTargets);
+          Entities = new ObservableCollection<EntityViewModel>(allEntities);
 
           CombatHelper.Engage(myMe, myEVE, engageableTargets, EngageRules);
         }

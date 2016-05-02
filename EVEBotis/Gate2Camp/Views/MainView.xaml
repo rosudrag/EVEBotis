@@ -26,11 +26,23 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Content="{Binding EntityName}" Grid.Column="0"/>
-                        <Label Content="{Binding EntityGroup}" Grid.Column="1"/>
-                        <Label Content="{Binding EntityDistanceTo}" Grid.Column="2"/>
-                        <Label Content="{Binding EntityStandings}" Grid.Column="3"/>
-                    </Grid>
+
+                        <StackPanel Grid.Column="0">
+                          <Label Content="{Binding EntityName}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                          <Label Content="{Binding EntityGroup}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                          <Label Content="{Binding EntityDistanceTo}"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3">
+                          <Label Content="{Binding EntityStandings}"/>
+                        </StackPanel>
+          </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

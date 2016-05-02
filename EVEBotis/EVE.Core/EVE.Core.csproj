@@ -63,7 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataServices\PlayerDataService.cs" />
+    <Compile Include="FrameActionsScheduler.cs" />
     <Compile Include="IDataService.cs" />
+    <Compile Include="IFrameActionsScheduler.cs" />
     <Compile Include="Model\EntityViewModel.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
