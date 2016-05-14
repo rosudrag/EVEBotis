@@ -152,6 +152,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj">
+      <Project>{8d841617-53fb-4bf1-b976-70377e91e6d3}</Project>
+      <Name>Core.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EVE.Cache\EVE.Cache.csproj">
       <Project>{f2c395a4-3b1f-41e9-9a8b-6099b8784b29}</Project>
       <Name>EVE.Cache</Name>

@@ -85,6 +85,10 @@ namespace Gate2Camp.EVEBotLogic.Common
         {
           module.Activate();
         }
+        else if (name.Contains("probe"))
+        {
+          //skip
+        }
         else if (name.Contains("booster"))
         {
           if (engageRules.UseRepairer != null && engageRules.UseRepairer.Value)

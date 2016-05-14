@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EVE.ISXEVE.TopLevelObjects;
+﻿using EVE.ISXEVE.TopLevelObjects;
 using LavishScriptAPI;
 
 namespace Gate2Camp.EVEBotLogic.Common

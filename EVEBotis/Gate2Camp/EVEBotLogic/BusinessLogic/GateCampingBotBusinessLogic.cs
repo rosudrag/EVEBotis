@@ -3,6 +3,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Core.Common;
 using EVE.Core;
 using EVE.Core.Model;
 using EVE.ISXEVE.DataTypes;
@@ -18,6 +19,8 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
 {
   public class GateCampingBotBusinessLogic : IBotBusinessLogic
   {
+    private readonly EveDebugLogger logger = new EveDebugLogger();
+
     /// <summary>
     ///   Initializes a new instance of the <see cref="GateCampingBotBusinessLogic" /> class.
     /// </summary>
@@ -134,11 +137,17 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
       {
         try
         {
-          var allEntities = EntityRepository.GetLocalGridEntities(myMe, myEVE);
+          var allEntities = EntityRepository.GetLocalGridEntities(myMe, myEVE).ToArray();
 
           var engageableTargets = CombatHelper.FindEngageableTargets(myMe, myEVE, allEntities, EngageRules).ToList();
 
           Entities = new ObservableCollection<EntityViewModel>(allEntities);
+
+          foreach (var engageableTarget in engageableTargets)
+          {
+            logger.Log(engageableTarget.EntityName + " " + " Corp: " + engageableTarget.Entity.Owner.Corp.Name + " " + engageableTarget.Entity.Owner.Corp.ID +
+                       " AllyId: " + engageableTarget.Entity.Owner.AllianceID + " isFleet" + engageableTarget.Entity.FleetTag);
+          }
 
           CombatHelper.Engage(myMe, myEVE, engageableTargets, EngageRules);
         }

@@ -21,7 +21,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     {
       try
       {
-        var entities = myEVE.QueryEntities().Where(entity => entity.IsPc && myMe.CharID != entity.CharID);
+        var entities = myEVE.QueryEntities().Where(entity => entity.IsPc && myMe.CharID != entity.CharID).ToArray();
 
         var oEntities = new List<EntityViewModel>();
 
