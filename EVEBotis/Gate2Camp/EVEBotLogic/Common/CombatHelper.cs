@@ -1,11 +1,8 @@
-﻿#region
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using EVE.Core.Model;
-using EVE.ISXEVE.DataTypes;
+using EVE.ISXEVE;
+using ILoveEVE.Core.Model;
 
-#endregion
 
 namespace Gate2Camp.EVEBotLogic.Common
 {
@@ -24,7 +21,7 @@ namespace Gate2Camp.EVEBotLogic.Common
     /// <param name="myEve">My eve.</param>
     /// <param name="entities">The entities.</param>
     /// <param name="engageRules">The engage rules.</param>
-    public static void Engage(Character myMe, EVE.ISXEVE.TopLevelObjects.EVE myEve,
+    public static void Engage(Character myMe, EVE.ISXEVE.EVE myEve,
       IEnumerable<EntityViewModel> entities, EngageRules engageRules)
     {
       IEnumerable<EntityViewModel> targettedNeuts = TargetNeuts(entities).ToList();
@@ -71,7 +68,7 @@ namespace Gate2Camp.EVEBotLogic.Common
     /// <param name="myMe">My me.</param>
     /// <param name="myEve">My eve.</param>
     /// <param name="engageRules"></param>
-    public static void ActivateModules(Character myMe, EVE.ISXEVE.TopLevelObjects.EVE myEve, EngageRules engageRules)
+    public static void ActivateModules(Character myMe, EVE.ISXEVE.EVE myEve, EngageRules engageRules)
     {
       var modules = myMe.Ship.GetModules();
 
@@ -173,7 +170,7 @@ namespace Gate2Camp.EVEBotLogic.Common
     /// <param name="engageRules">The engage rules.</param>
     /// <returns></returns>
     public static IEnumerable<EntityViewModel> FindEngageableTargets(Character myMe,
-      EVE.ISXEVE.TopLevelObjects.EVE myEVE, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
+      EVE.ISXEVE.EVE myEVE, IEnumerable<EntityViewModel> entities, EngageRules engageRules)
     {
       var allNeutrals = entities.Where(
         x =>

@@ -1,11 +1,11 @@
 #region
 
 using System.Windows.Input;
-using EVE.Core;
-using EVE.Core.Model;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Gate2Camp.ViewModels;
+using ILoveEVE.Core;
+using ILoveEVE.Core.Model;
 
 #endregion
 

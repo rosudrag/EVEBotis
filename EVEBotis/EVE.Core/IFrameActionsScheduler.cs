@@ -1,4 +1,4 @@
-﻿namespace EVE.Core
+﻿namespace ILoveEVE.Core
 {
   public interface IFrameActionsScheduler
   {

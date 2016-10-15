@@ -2,10 +2,7 @@
 using System.Linq;
 using Core.Common;
 using DryIoc;
-using EVE.ISXEVE.DataTypes;
-using EVE.ISXEVE.Extensions;
-using EVE.ISXEVE.TopLevelObjects;
-using Gate2Camp.EVEBotLogic.Common;
+using EVE.ISXEVE;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 using LavishVMAPI;
@@ -27,16 +24,14 @@ namespace TestingApi.Runner
       Console.ReadLine();
     }
 
-    private static void TestGetLocalGridEntities(Character me, EVE.ISXEVE.TopLevelObjects.EVE eve, ILogger logger)
+    private static void TestGetLocalGridEntities(Character me, EVE.ISXEVE.EVE eve, ILogger logger)
     {
       //var entities = EntityRepository.GetLocalGridEntities(me, eve);
       eve.RefreshStandings();
-      var entities = eve.QueryEntities().Where(x => x.IsPc);
+      var entities = eve.QueryEntities().Where(x => x.IsPC);
 
       //var anObj = LavishScript.Objects.GetObject("Local", "Romvex");
       //logger.Log(anObj.ToString());
-
-      eve.get
 
       var pilot = new Pilot("Romvex ");
       logger.Log(pilot.ToString());

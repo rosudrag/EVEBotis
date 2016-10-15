@@ -12,11 +12,10 @@
   See http://www.galasoft.ch/mvvm
 */
 
-using EVE.Core;
-using EVE.Core.DataServices;
-using EVE.Core.Model;
-using GalaSoft.MvvmLight;
+using ILoveEVE.Core.DataServices;
 using GalaSoft.MvvmLight.Ioc;
+using ILoveEVE.Core;
+using ILoveEVE.Core.Model;
 using Microsoft.Practices.ServiceLocation;
 
 namespace EVEBotis.ViewModel

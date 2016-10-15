@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.Caching;
-using System.Text;
-using System.Threading.Tasks;
-using EVE.Core.Model;
-using EVE.ISXEVE;
+using ILoveEVE.Core.Model;
 
-namespace EVE.Cache
+namespace ILoveEVE.Cache
 {
     /// <summary>
     /// 

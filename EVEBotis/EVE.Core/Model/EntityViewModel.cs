@@ -1,8 +1,8 @@
 ﻿using System;
-using EVE.ISXEVE.TopLevelObjects;
+using EVE.ISXEVE;
 using GalaSoft.MvvmLight;
 
-namespace EVE.Core.Model
+namespace ILoveEVE.Core.Model
 {
   public class EntityViewModel : ObservableObject, IComparable<EntityViewModel>
   {

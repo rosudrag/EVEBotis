@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using EVE.Core.Model;
-using EVE.ISXEVE.DataTypes;
-using EVE.ISXEVE.TopLevelObjects;
+using EVE.ISXEVE;
+using ILoveEVE.Core.Model;
 
 namespace Gate2Camp.EVEBotLogic.Common
 {

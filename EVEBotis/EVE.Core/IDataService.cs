@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EVE.Core
+namespace ILoveEVE.Core
 {
     public interface IDataService<T>
     {

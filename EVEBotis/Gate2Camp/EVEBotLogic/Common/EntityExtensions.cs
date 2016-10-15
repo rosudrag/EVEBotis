@@ -1,4 +1,4 @@
-﻿using EVE.ISXEVE.TopLevelObjects;
+﻿using EVE.ISXEVE;
 using LavishScriptAPI;
 
 namespace Gate2Camp.EVEBotLogic.Common

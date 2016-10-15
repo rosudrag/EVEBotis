@@ -4,11 +4,10 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Core.Common;
-using EVE.Core;
-using EVE.Core.Model;
-using EVE.ISXEVE.DataTypes;
-using EVE.ISXEVE.Extensions;
+using EVE.ISXEVE;
 using Gate2Camp.EVEBotLogic.Common;
+using ILoveEVE.Core;
+using ILoveEVE.Core.Model;
 using InnerSpaceAPI;
 using LavishScriptAPI;
 using LavishVMAPI;
@@ -46,7 +45,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     /// <value>
     ///   My eve.
     /// </value>
-    private EVE.ISXEVE.TopLevelObjects.EVE MyEve { get; set; }
+    private EVE.ISXEVE.EVE MyEve { get; set; }
 
     /// <summary>
     ///   Gets or sets me.
@@ -112,12 +111,6 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
           MyMe = ext.Me;
 
           DoWork(MyMe, MyEve);
-
-          //DEBUG
-          //InnerSpace.Echo("GO BRAWL: " + EngageRules.GoBrawl);
-          //InnerSpace.Echo("Use Prop: " + EngageRules.UsePropulsion);
-          //InnerSpace.Echo("Use rep: " + EngageRules.UseRepairer);
-          //InnerSpace.Echo("Max Range: " + EngageRules.MaxRange);
         }
         catch (Exception exp)
         {
@@ -131,7 +124,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     /// </summary>
     /// <param name="myMe">My me.</param>
     /// <param name="myEVE">My eve.</param>
-    private void DoWork(Character myMe, EVE.ISXEVE.TopLevelObjects.EVE myEVE)
+    private void DoWork(Character myMe, EVE.ISXEVE.EVE myEVE)
     {
       if (CurrentBotState == BotState.Active)
       {
@@ -167,7 +160,7 @@ namespace Gate2Camp.EVEBotLogic.BusinessLogic
     {
       Frame.Wait(true);
 
-      MyEve = new EVE.ISXEVE.TopLevelObjects.EVE();
+      MyEve = new EVE.ISXEVE.EVE();
       MyMe = new Me();
 
       MyEve.RefreshStandings();

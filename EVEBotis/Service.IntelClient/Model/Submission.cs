@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
 
-namespace DataAccess.Main.Models
+namespace Service.IntelClient.Model
 {
     /// <summary>
     /// Class that models an Intel submission

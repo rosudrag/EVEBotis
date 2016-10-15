@@ -1,0 +1,3 @@
+[submodule "EVEBotis/ISXEVEWrapper"]
+	path = EVEBotis/ISXEVEWrapper
+	url = https://github.com/isxGames/ISXEVEWrapper.git

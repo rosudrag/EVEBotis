@@ -7,8 +7,8 @@
     <ProjectGuid>{157A53D2-035B-433A-823C-7FC069219A14}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EVE.Core</RootNamespace>
-    <AssemblyName>EVE.Core</AssemblyName>
+    <RootNamespace>ILoveEVE.Core</RootNamespace>
+    <AssemblyName>ILoveEVE.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,9 +35,6 @@
     </Reference>
     <Reference Include="GalaSoft.MvvmLight.Extras">
       <HintPath>..\packages\MvvmLightLibs.4.4.32.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
-    </Reference>
-    <Reference Include="ISXEVEWrapper">
-      <HintPath>C:\Program Files (x86)\InnerSpace\.NET Programs\ISXEVEWrapper.dll</HintPath>
     </Reference>
     <Reference Include="Lavish.InnerSpace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -72,6 +69,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ISXEVEWrapper\EVE.ISXEVE.csproj">
+      <Project>{a9583204-c40d-4496-bb62-0f9546e5d613}</Project>
+      <Name>EVE.ISXEVE</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

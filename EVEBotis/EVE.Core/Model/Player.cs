@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EVE.Core.Model
+﻿namespace ILoveEVE.Core.Model
 {
     public class Player
     {
