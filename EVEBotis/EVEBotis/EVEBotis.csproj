@@ -190,10 +190,6 @@
       <Project>{64e3e07c-8740-4e5e-89e7-a734ce0e3140}</Project>
       <Name>MtuDealer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PosBash\PosBash.csproj">
-      <Project>{02bf5a01-02a0-424a-8a45-319570f9e525}</Project>
-      <Name>PosBash</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
