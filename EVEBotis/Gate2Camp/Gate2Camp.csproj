@@ -49,6 +49,7 @@
     </Reference>
     <Reference Include="ISXEVEWrapper">
       <HintPath>C:\Program Files (x86)\InnerSpace\.NET Programs\ISXEVEWrapper.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Lavish.InnerSpace, Version=1.0.0.0, Culture=neutral, PublicKeyToken=9029a3ab4cbe108d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

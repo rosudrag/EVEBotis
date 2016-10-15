@@ -1,6 +1,7 @@
 ﻿using System;
 using EVE.ISXEVE;
 using ILoveEVE.Core.Model;
+using InnerSpaceAPI;
 using LavishVMAPI;
 
 namespace ILoveEVE.Core.DataServices
@@ -20,6 +21,8 @@ namespace ILoveEVE.Core.DataServices
       }
       catch (Exception e)
       {
+        InnerSpace.Echo("Unable to retrieve char name");
+        InnerSpace.Echo(e.ToString());
         callback(null, e);
       }
     }
@@ -32,12 +35,15 @@ namespace ILoveEVE.Core.DataServices
     {
       var player = new Player();
 
-      using (new FrameLock())
-      {
-        var me = new Me();
+      Frame.Wait(true);
 
-        player.Name = me.Name;
-      }
+      var me = new Me();
+
+      player.Name = me.Name;
+
+      InnerSpace.Echo(me.Name);
+
+      Frame.Unlock();
 
       return player;
     }
