@@ -31,12 +31,6 @@ namespace EVEBotis.ViewModel
     private static readonly Gate2CampViewModel Gate2CampViewModel = new Gate2CampViewModel();
 
     /// <summary>
-    ///   The _mtu deal view model
-    /// </summary>
-    private static readonly MtuDealer.ViewModels.MainViewModel MtuDealerViewModel =
-      new MtuDealer.ViewModels.MainViewModel();
-
-    /// <summary>
     ///   The _application title
     /// </summary>
     private string _applicationTitle = string.Empty;
@@ -60,7 +54,6 @@ namespace EVEBotis.ViewModel
 
       CurrentViewModel = Gate2CampViewModel;
       Gate2CampViewCommand = new RelayCommand(ExecuteGate2CampViewCommand);
-      MtuDealerViewCommand = new RelayCommand(ExecuteMtuDealerViewCommand);
     }
 
     /// <summary>
@@ -135,12 +128,6 @@ namespace EVEBotis.ViewModel
       CurrentViewModel = Gate2CampViewModel;
     }
 
-    /// <summary>
-    ///   Executes the mtu dealer view command.
-    /// </summary>
-    private void ExecuteMtuDealerViewCommand()
-    {
-      CurrentViewModel = MtuDealerViewModel;
-    }
+
   }
 }

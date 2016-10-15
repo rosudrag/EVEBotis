@@ -186,14 +186,8 @@
       <Project>{c2c140c1-7cfe-4c67-9ca2-e43fe2885072}</Project>
       <Name>Gate2Camp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MtuDealer\MtuDealer.csproj">
-      <Project>{64e3e07c-8740-4e5e-89e7-a734ce0e3140}</Project>
-      <Name>MtuDealer</Name>
-    </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
